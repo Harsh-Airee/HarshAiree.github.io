@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Combined CSS Animations</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .section {
+    border: 4px solid #334155;   /* box model border */
+    padding: 20px;               /* box model padding */
+    margin: 20px auto;           /* box model margin */
+    background: #1e293b;         /* box model background */
+    border-radius: 12px;
+    width: 90%;
+    text-align: center;
+  }
+
+  /* 1. Bouncing Ball */
+  .ball {
+    width:100px; height:100px;
+    border:5px solid #fff;
+    background:red;
+    border-radius:50%;
+    margin:auto;
+    animation: bounce 2s infinite, morph 2s infinite, colorchange 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(200px); }
+  }
+  @keyframes morph {
+    0%,100% { border-radius:50%; }
+    50% { border-radius:0; }
+  }
+  @keyframes colorchange {
+    0% { background:red; }
+    50% { background:blue; }
+    100% { background:green; }
+  }
+
+  /* 2. Rotating Square */
+  .square {
+    width:100px; height:100px;
+    background:blue;
+    margin:auto;
+    animation: move 3s infinite alternate, rotate 3s infinite linear, squarecolor 3s infinite alternate;
+  }
+  @keyframes move {
+    from { transform: translateX(0); }
+    to { transform: translateX(300px); }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes squarecolor {
+    0% { background:blue; }
+    50% { background:purple; }
+    100% { background:orange; }
+  }
+
+  /* 3. Rotating Triangle */
+  .triangle {
+    width:0; height:0;
+    border-left:50px solid transparent;
+    border-right:50px solid transparent;
+    border-bottom:100px solid lime;
+    margin:auto;
+    animation: spin 4s infinite linear;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* 4. Animated SVG Circle */
+  svg { width:400px; height:200px; background:#444; margin:auto; display:block; }
+  circle {
+    fill:yellow;
+    animation: moveX 3s infinite alternate;
+  }
+  @keyframes moveX {
+    from { transform: translateX(0); }
+    to { transform: translateX(300px); }
+  }
+
+  /* 5. Multiple Animations */
+  .multi {
+    width:100px; height:100px;
+    background:pink;
+    border-radius:20px;
+    margin:auto;
+    animation: moveY 4s infinite alternate, spin2 4s infinite linear, multicolor 4s infinite alternate;
+  }
+  @keyframes moveY {
+    from { transform: translateY(0); }
+    to { transform: translateY(200px); }
+  }
+  @keyframes spin2 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes multicolor {
+    0% { background:pink; }
+    50% { background:cyan; }
+    100% { background:yellow; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>1. Bouncing Ball</h2>
+    <div class="ball"></div>
+  </div>
+
+  <div class="section">
+    <h2>2. Rotating Square</h2>
+    <div class="square"></div>
+  </div>
+
+  <div class="section">
+    <h2>3. Rotating Triangle</h2>
+    <div class="triangle"></div>
+  </div>
+
+  <div class="section">
+    <h2>4. Animated SVG Circle</h2>
+    <svg>
+      <circle cx="50" cy="100" r="40"></circle>
+    </svg>
+  </div>
+
+  <div class="section">
+    <h2>5. Multiple Animations</h2>
+    <div class="multi"></div>
+  </div>
+
+</body>
+</html>
